@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://webappkyh.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_71dddee5acfc46e0ade10bb7b3c990eb }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_20d5b9b4dbfa4fda9b201d2a760ea7c8 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_76e9c977f74b4f9e844771de4468fce6 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_0998aa8d38b54c789ce9d7b56ebbc8ea }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: webappkyh.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_71dddee5acfc46e0ade10bb7b3c990eb }}/monitorapplication:${{ github.sha }}
+        tags: webappkyh.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_76e9c977f74b4f9e844771de4468fce6 }}/monitorapplication:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'webappkyh'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_8ebfec699cd840ad90d97060f7595d31 }}
-        images: 'webappkyh.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_71dddee5acfc46e0ade10bb7b3c990eb }}/monitorapplication:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_d0ff2cda41294b16b3f77b1b458c5115 }}
+        images: 'webappkyh.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_76e9c977f74b4f9e844771de4468fce6 }}/monitorapplication:${{ github.sha }}'
